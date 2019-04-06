@@ -1,0 +1,27 @@
+---
+server:
+  port: 8810
+spring:
+  profiles: peerA
+  application:
+    name: eureka-server-A
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8811/eureka/
+---
+server:
+  port: 8811
+spring:
+  profiles: peerB
+  application:
+    name: eureka-server-B
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    instanceInfoReplicationIntervalSeconds: 10
+    serviceUrl:
+      defaultZone: http://peer1:8810/eureka/
