@@ -99,7 +99,7 @@ public class applicationConsumerController {
     @RequestMapping("/helloUser")
     public User findUser(){
 
-        return feignConsumerService.hello("");
+        return feignConsumerService.hello("123");
 
     }
 }

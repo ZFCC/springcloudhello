@@ -24,3 +24,7 @@ ribbon:
     eager-load:
         enabled: true #开启Ribbon的饥饿加载模式
         clients: eureka-provider, eureka-consumer #指定需要饥饿加载的客户端名称、服务名
+
+logging:
+    level:
+        com.sn.springcloudhellocomsumer.feign.FeignConsumerService: debug

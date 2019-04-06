@@ -1,8 +1,9 @@
 package com.sn.springcloudhellocomsumer.feign;
 
 import com.sn.springcloudhelloprovider.Fegin.FeignService;
-import com.sn.springcloudhelloprovider.Fegin.User;
+import feign.Logger;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Copyright (C), 2002-2019, 苏宁易购电子商务有限公司
@@ -14,7 +15,14 @@ import org.springframework.cloud.openfeign.FeignClient;
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-@FeignClient(value = "eureka-provider")
+@FeignClient(value = "eureka-provider",configuration = UserFeignConfig.class)
 public interface FeignConsumerService extends FeignService {
 
+}
+
+class UserFeignConfig {
+    @Bean
+    public Logger.Level logger() {
+        return Logger.Level.FULL;
+    }
 }
